@@ -7,13 +7,11 @@ fun main() {
     val quadrado = "quadrado"
     val retangulo = "retângulo"
     val mapFormas = mutableMapOf<FormaGeometrica, String>()
+    val arrayFormas = ArrayList<FormaGeometrica>()
+
 
     println("Digite a quantidade de formas a calcular:")
     val qtdFormas = readln().toInt()
-
-
-    val arrayFormas = ArrayList<FormaGeometrica>()
-
 
     for(i in 0 until qtdFormas){
         println("Digite o ${i+1}º tipo de forma a ser calculada:")
@@ -38,7 +36,7 @@ fun main() {
             retangulo -> {
                 println("Digite o valor da base:")
                 val base = readln().toDouble()
-                println("Digite o valor da base:")
+                println("Digite o valor da altura:")
                 val altura = readln().toDouble()
                 arrayFormas.add(Retangulo(base, altura))
                 mapFormas[arrayFormas[i]] = retangulo
@@ -48,7 +46,6 @@ fun main() {
 
     println("#### Informações das Formas Geométricas ####")
     mapFormas.forEach{
-        println("${it.value}: Área = ${it.key.calcularArea()};\nPerímetro = ${it.key.calcularPerimetro()}")
-        println("---###---###---###---###---")
+        it.key.mostrarInformacoes(it.value)
     }
 }
